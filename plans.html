@@ -21,27 +21,59 @@
     </nav>
     <section class="plans" id="plans">
 
-        <h2>Our plans</h2>
-
+        <h2>Membership Plans</h2>
+    
         <div class="plans-box">
-
+    
+            <!-- 1 Month -->
             <div class="card">
-                <h3>Weight Training</h3>
-                <p>Build muscle and increase strength.</p>
+                <h3>1 Month Plan</h3>
+                <div class="price">₹899</div>
+    
+                <p>✔ Gym Access</p>
+                <p>✔ Cardio Area</p>
+                <p>✔ Locker Facility</p>
+    
+                <button onclick="selectPlan('1 Month Plan', 899)">
+                    Choose Plan
+                </button>
             </div>
-
+    
+            <!-- 6 Months -->
+            <div class="card popular">
+                <h3>6 Months Plan</h3>
+                <div class="price">₹1,999</div>
+    
+                <p>✔ Gym Access</p>
+                <p>✔ Personal Trainer</p>
+                <p>✔ Diet Consultation</p>
+                <p>✔ Locker Facility</p>
+    
+                <button onclick="selectPlan('6 Months Plan', 1999)">
+                    Choose Plan
+                </button>
+            </div>
+    
+            <!-- 1 Year -->
             <div class="card">
-                <h3>Cardio</h3>
-                <p>Improve stamina and endurance.</p>
+                <h3>1 Year Plan</h3>
+                <div class="price">₹2,999</div>
+    
+                <p>✔ Unlimited Access</p>
+                <p>✔ Personal Trainer</p>
+                <p>✔ Diet Plan</p>
+                <p>✔ Fitness Assessment</p>
+    
+                <button onclick="selectPlan('1 Year Plan', 2999)">
+                    Choose Plan
+                </button>
             </div>
-
-            <div class="card">
-                <h3>Yoga</h3>
-                <p>Relax your body and mind.</p>
-            </div>
-
+    
         </div>
-
+    
     </section>
+    <div id="planMessage"></div>
+
+<script src="script.js"></script>
 </body>
 </html>

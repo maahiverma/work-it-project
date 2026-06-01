@@ -1,22 +1,33 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Poppins',sans-serif;
 }
 
-/* NAVBAR */
+body{
+    background:#111;
+    color:#fff;
+}
+
+/* =========================
+   NAVBAR
+========================= */
 
 .navbar{
     display:flex;
     justify-content:space-between;
     align-items:center;
-
     padding:20px 50px;
-    background-color:rgba(0,0,0,0.6);
-
+    background:rgba(0,0,0,0.7);
     position:fixed;
+    top:0;
     width:100%;
+    z-index:1000;
 }
 
 .logo{
@@ -35,15 +46,21 @@
     text-decoration:none;
     color:white;
     font-size:18px;
+    transition:0.3s;
 }
 
-/* HOME SECTION */
+.nav-links a:hover{
+    color:#7CFC00;
+}
+
+/* =========================
+   HOME / HERO SECTION
+========================= */
 
 .hero{
     height:100vh;
 
     background-image:url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop');
-
     background-size:cover;
     background-position:center;
 
@@ -55,6 +72,8 @@
 
 .hero-content{
     color:white;
+    opacity:0;
+    transition:1.5s ease-in-out;
 }
 
 .hero-content h1{
@@ -67,169 +86,83 @@
     margin-bottom:30px;
 }
 
-.btn{
-    text-decoration:none;
-    background-color:#04AA6D;
+/* Hero Button */
+
+.hero-content button{
+    margin-top:20px;
+    padding:14px 35px;
+    border:none;
+    border-radius:30px;
+    background:#04AA6D;
     color:white;
-
-    padding:15px 35px;
-    border-radius:8px;
-
-    font-size:20px;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:all 0.3s ease;
+    box-shadow:0 4px 15px rgba(4,170,109,0.4);
 }
 
-/* ABOUT SECTION */
-
-.training{
-    padding:100px 50px;
-    text-align:center;
-    background-color:#111;
-    color:white;
+.hero-content button:hover{
+    background:#028a59;
+    transform:translateY(-4px);
+    box-shadow:0 8px 20px rgba(4,170,109,0.6);
 }
 
-.training h2{
-    font-size:40px;
-    margin-bottom:20px;
-}
-
-/* PROGRAM SECTION */
-
-.plans{
-    padding:100px 50px;
-    text-align:center;
-    background-color:#1c1c1c;
-    color:white;
-}
-
-.plans h2{
-    font-size:40px;
-    margin-bottom:40px;
-}
-
-.plans-box{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-}
-
-.card{
-    background-color:#04AA6D;
-    padding:30px;
-    width:250px;
-    border-radius:10px;
-}
-
-/* CONTACT SECTION */
-
-.contact{
-    padding:100px 50px;
-    text-align:center;
-    background-color:#111;
-    color:white;
-}
-
-.contact h2{
-    font-size:40px;
-    margin-bottom:20px;
-}
-
-
-/* TRAINING SECTION */
-/* TRAINING SECTION */
+/* =========================
+   TRAINING SECTION
+========================= */
 
 .training-section{
     background:#111;
-    padding:100px 50px;
+    padding:120px 50px 100px;
     text-align:center;
 }
 
-.heading{
-    color:white;
+.training-section h2{
     font-size:45px;
     margin-bottom:50px;
 }
 
-/* SAME LINE CONTAINER */
+/* Training Cards Container */
 
 .training-container{
     display:flex;
     justify-content:center;
     align-items:center;
     gap:30px;
+    flex-wrap:wrap;
 }
 
-/* CARD */
+/* Individual Training Card */
 
 .training-card{
     position:relative;
-
     width:320px;
     height:420px;
-
     border-radius:20px;
-    overflow:visible;
-   
-    transition:0.4s;
-
+    overflow:hidden;
     cursor:pointer;
+    transition:0.4s;
 }
 
 .training-card img{
     width:100%;
     height:100%;
     object-fit:cover;
+    transition:0.5s;
 }
 
-/* TEXT ON IMAGE */
+/* Dark Overlay */
 
-.content{
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-    text-align:center;
-    color: rgb(198, 201, 197);
-    
-    width: 80%;
-    z-index: 2;
+.training-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.4);
+    z-index:1;
 }
 
-.content h2{
-    font-size: 32px;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 8px black;
-}
-
-.content p{
-    font-size: 18px;
-    text-shadow: 2px 2px 8px black;
-}
-
-/* BUTTON */
-
-.content button{
-    padding:12px 25px;
-
-    border:none;
-    border-radius:8px;
-
-    background:#04AA6D;
-
-    color:white;
-
-    font-size:16px;
-
-    cursor:pointer;
-
-    transition:0.3s;
-}
-
-.content button:hover{
-    background:#028a59;
-}
-
-/* HOVER EFFECT */
+/* Hover Effects */
 
 .training-card:hover{
     transform:translateY(-10px);
@@ -239,25 +172,142 @@
     transform:scale(1.1);
 }
 
- /* CONTACT section */
-*{
-    
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+/* Text Over Image */
+
+.content{
+    position:absolute;
+    top:70%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    text-align:center;
+    color:white;
+    width:80%;
+    z-index:2;
 }
 
-body{
-    background:#111;
-    color:#fff;
+.content h3{
+    font-size:30px;
+    margin-bottom:10px;
+    text-shadow:2px 2px 8px black;
 }
+
+.content p{
+    font-size:18px;
+    margin-bottom:15px;
+    text-shadow:2px 2px 8px black;
+}
+
+/* Training Button */
+
+.content button{
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    background:#04AA6D;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.content button:hover{
+    background:#028a59;
+}
+
+/* Training JS Message */
+
+#trainingMessage{
+    margin-top:30px;
+    text-align:center;
+    font-size:22px;
+    color:#04AA6D;
+    font-weight:600;
+    animation:fadeIn 0.5s ease;
+}
+
+/* =========================
+   PLANS SECTION
+========================= */
+
+.plans{
+    padding:120px 50px 100px;
+    text-align:center;
+    background:#1c1c1c;
+}
+
+.plans h2{
+    font-size:42px;
+    margin-bottom:50px;
+}
+
+/* Plans Container */
+
+.plans-box{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+/* Plan Card */
+
+.card{
+    background:#04AA6D;
+    padding:30px;
+    width:300px;
+    border-radius:15px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+/* Plan Price */
+
+.price{
+    font-size:40px;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+.card p{
+    margin:10px 0;
+}
+
+/* Plan Button */
+
+.card button{
+    width:100%;
+    margin-top:20px;
+    padding:14px 20px;
+    border:none;
+    border-radius:50px;
+    background:#040807;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.card button:hover{
+    background:#055786;
+    transform:translateY(-5px);
+    box-shadow:0 0 20px rgba(8,157,165,0.7);
+}
+
+/* =========================
+   CONTACT SECTION
+========================= */
 
 .contact-section{
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:60px 8%;
+    padding:120px 8% 60px;
 }
 
 .contact-container{
@@ -267,7 +317,7 @@ body{
     gap:40px;
 }
 
-/* Left Side */
+/* Left Side Contact Info */
 
 .contact-info{
     flex:1;
@@ -303,7 +353,7 @@ body{
     margin-bottom:8px;
 }
 
-/* Right Side */
+/* Contact Form */
 
 .contact-form{
     flex:1;
@@ -336,6 +386,8 @@ body{
     border:2px solid #ff4d00;
 }
 
+/* Contact Button */
+
 .contact-form button{
     background:#ff4d00;
     color:white;
@@ -353,30 +405,73 @@ body{
     transform:translateY(-3px);
 }
 
+/* Contact JS Success Message */
+
+#successMessage{
+    margin-top:15px;
+    color:#04AA6D;
+    font-weight:bold;
+    text-align:center;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+/* Tablet */
 
 @media(max-width:992px){
+
+    .plans-box{
+        flex-wrap:wrap;
+    }
 
     .contact-container{
         gap:25px;
     }
 
     .contact-info h1{
-        padding-top: 130px;
         font-size:2.5rem;
     }
-    
-    .plans-box{
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .navbar{
-        display: flex;
-        flex-wrap: wrap;
-    }
-   
 }
 
+/* Mobile */
+
 @media(max-width:768px){
+
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+        padding:15px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero-content h1{
+        font-size:45px;
+    }
+
+    .hero-content p{
+        font-size:18px;
+    }
 
     .contact-container{
         flex-direction:column;
@@ -386,20 +481,24 @@ body{
         text-align:center;
     }
 
-    .contact-info h1{
-        font-size:2.2rem;
+    .training-card{
+        width:90%;
+        max-width:400px;
+        height:350px;
     }
-    .training-container{
-        display: flex;
-        flex-wrap: wrap;
+
+    .card button{
+        font-size:15px;
+        padding:12px 18px;
     }
-    
 }
+
+/* Small Mobile */
 
 @media(max-width:576px){
 
     .contact-section{
-        padding:40px 5%;
+        padding:100px 5% 40px;
     }
 
     .contact-info h1{
@@ -420,10 +519,29 @@ body{
         padding:12px;
         font-size:16px;
     }
-   
 }
 
-@media(max-width:400px){
+/* Extra Small Devices */
+
+@media(max-width:480px){
+
+    .hero-content h1{
+        font-size:32px;
+    }
+
+    .hero-content p{
+        font-size:16px;
+    }
+
+    .training-section h2,
+    .plans h2{
+        font-size:30px;
+    }
+
+    .card button{
+        font-size:14px;
+        padding:10px 16px;
+    }
 
     .contact-info h1{
         font-size:1.5rem;
